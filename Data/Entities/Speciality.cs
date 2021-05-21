@@ -18,7 +18,8 @@ namespace Data.Entities
         public double Price { get; set; }
         public string InspectorName { get; set; }
         public byte Duration { get; set; }
-        public int? FacultyId { get; set; }
+        public int FacultyId { get; set; }
         public virtual Faculty Faculty { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

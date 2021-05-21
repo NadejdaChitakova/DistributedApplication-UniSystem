@@ -22,8 +22,18 @@ namespace MVC.Controllers
             }
             return View(studentsVM);
         }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(StudentVM studentVM)
         {
+            try { 
             
                 if (ModelState.IsValid)
                 {
@@ -36,17 +46,25 @@ namespace MVC.Controllers
                             EGN = studentVM.EGN,
                             DateOfBirth = studentVM.DateOfBirth,
                             PhoneNumber = studentVM.PhoneNumber,
-                            SpecialityId = studentVM.SpecialityId,
-                            Speciality = new SpecialityDTO
-                            {
-                                Id = (int)studentVM.SpecialityId,
-                            }
+                            SpecialityId = (int)studentVM.SpecialityId,
+                        //    CurrentSpeciality = new SpecialityDTO
+                        //    {
+                        //        Id = (int)studentVM.SpecialityId,
+                        //        Name = studentVM.specialityVM.Name
+                        //    }
                         };
                         client.PostStudent(studentDTO);
                         return RedirectToAction("Index");
                     }
                 }
                 return View();
+            }
+            catch
+            {
+                ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
+                return View();
+
+            }
             
         }
 

@@ -24,10 +24,10 @@ namespace ApplicationService.Implementation
                     EGN = item.EGN,
                     FirstName = item.FirstName,
                     LastName = item.LastName,
-                    SpecialityId = item.SpecialityId,
-                    Speciality = new SpecialityDTO
+                    SpecialityId = (int)item.SpecialityId,
+                    CurrentSpeciality = new SpecialityDTO
                     {
-                        Id = (int)item.SpecialityId,
+                        Id = item.Id,
                         Name = item.CurrentSpeciality.Name
                     }
                 });
@@ -44,8 +44,8 @@ namespace ApplicationService.Implementation
                 EGN = item.EGN,
                 FirstName = item.FirstName,
                 LastName = item.LastName,
-                SpecialityId = item.SpecialityId,
-                Speciality = new SpecialityDTO
+                SpecialityId = (int)item.SpecialityId,
+                CurrentSpeciality = new SpecialityDTO
                 {
                     Id = (int)item.SpecialityId,
                     Name = item.CurrentSpeciality.Name
@@ -55,23 +55,23 @@ namespace ApplicationService.Implementation
         }
         public bool Save(StudentDTO studentDTO)
         {
-            if (studentDTO.Speciality == null || studentDTO.SpecialityId == 0 )
+            if ( studentDTO.SpecialityId == 0 )
             {
                 return false;
             }
-            /* 
-             * Speciality speciality = new Speciality { 
-                Id= (int)studentDTO.SpecialityId,
-                Name = studentDTO.Speciality.Name
-            };
-            */
-            Student student = new Student { 
+
+                Student student = new Student {
                 EGN = studentDTO.EGN,
                 FirstName = studentDTO.FirstName,
                 LastName = studentDTO.LastName,
                 PhoneNumber = studentDTO.PhoneNumber,
                 DateOfBirth = studentDTO.DateOfBirth,
-                SpecialityId = studentDTO.SpecialityId
+                SpecialityId = studentDTO.SpecialityId,
+                //Speciality = new Speciality
+                //{
+                //    Id = studentDTO.Id,
+                //    Name = studentDTO.CurrentSpeciality.Name
+                //}
                 
             };
             try

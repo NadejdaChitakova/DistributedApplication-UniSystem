@@ -15,9 +15,8 @@ namespace ApplicationService.DTO
         public string LastName { get; set; }
         public int PhoneNumber { get; set; }
         public DateTime? DateOfBirth { get; set; }
-
         public int? SpecialityId { get; set; }
-        public virtual SpecialityDTO Speciality { get; set; }
+        public virtual SpecialityDTO CurrentSpeciality { get; set; }
 
     }
 }

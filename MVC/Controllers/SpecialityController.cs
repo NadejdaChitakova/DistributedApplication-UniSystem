@@ -26,6 +26,7 @@ namespace MVC.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.Faculties = Helper.LoadDataUnilities.LoadFaculties();
             return View();
         }
         [HttpPost]
@@ -44,7 +45,13 @@ namespace MVC.Controllers
                             CountSubject = specialityVM.CountSubject,
                             Price = specialityVM.Price,
                             InspectorName = specialityVM.InspectorName,
-                            Duration = specialityVM.Duration
+                            Duration = specialityVM.Duration,
+                            FacultyId = (int)specialityVM.FacultyId,
+                            //CurrentFaculty = new FacultyDTO
+                            //{
+                            //    Id = specialityVM.Id,
+                            //    //Name = specialityVM.Name
+                            //}
 
                         };
                         service.PostSpeciality(specialityDTO);
@@ -55,9 +62,18 @@ namespace MVC.Controllers
             }
             catch 
             {
-
+                ViewBag.Faculties = Helper.LoadDataUnilities.LoadFaculties();
                 return View();
             }
+        }
+        public ActionResult Delete(int id)
+        {
+
+            using (SoapService.Service1Client service = new SoapService.Service1Client())
+            {
+                service.DeleteSpeciality(id);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -47,7 +47,12 @@ namespace ApplicationService.Implementation
                 Price = specialityDTO.Price,
                 InspectorName = specialityDTO.InspectorName,
                 CountSubject = specialityDTO.CountSubject,
-                FacultyId = specialityDTO.FacultyId
+                FacultyId = specialityDTO.FacultyId,
+                //Faculty = new Faculty
+                //{
+                //    Id = specialityDTO.Id,
+                //    Name = specialityDTO.Name
+                //}
             };
             try
             {

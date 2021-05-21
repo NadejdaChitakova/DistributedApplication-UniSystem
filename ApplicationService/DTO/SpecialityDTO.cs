@@ -15,7 +15,7 @@ namespace ApplicationService.DTO
         public double Price { get; set; }
         public string InspectorName { get; set; }
         public byte Duration { get; set; }
-        public int? FacultyId { get; set; }
+        public int FacultyId { get; set; }
         public virtual FacultyDTO CurrentFaculty { get; set; }
 
     }

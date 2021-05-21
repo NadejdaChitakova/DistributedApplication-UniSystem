@@ -22,6 +22,9 @@ namespace MVC.ViewModels
         public string InspectorName { get; set; }
         [Required]
         public byte Duration { get; set; }
+        [Required]
+        public int? FacultyId { get; set; }
+        public FacultiesVM FacultiesVM { get; set; }
         public SpecialityVM() { }
         public SpecialityVM(SpecialityDTO specialityDto) {
             Id = specialityDto.Id;
@@ -30,6 +33,13 @@ namespace MVC.ViewModels
             Price = specialityDto.Price;
             InspectorName = specialityDto.InspectorName;
             Duration = specialityDto.Duration;
+            FacultyId = specialityDto.Id;
+            //FacultiesVM = new FacultiesVM
+            //{
+            //    Id = specialityDto.Id,
+            //   // Name = specialityDto.Name
+            //};
+            
         }
     }
 }
