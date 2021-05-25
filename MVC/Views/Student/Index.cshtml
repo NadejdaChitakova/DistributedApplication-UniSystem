@@ -5,7 +5,12 @@
 }
 
 <h2>Index</h2>
-
+<form asp-controller ="Student" asp-action="Index">
+    <p>
+        EGN: <input type="text" name="searchEGN" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -35,7 +40,7 @@
         @Html.DisplayFor(modelItem => item.LastName)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     </td>

@@ -11,7 +11,7 @@ namespace MVC.Controllers
     public class SpecialityController : Controller
     {
         // GET: Speciality
-        public ActionResult Index()
+        public ActionResult Index(String name)
         {
             List<SpecialityVM> list = new List<SpecialityVM>();
 
@@ -20,6 +20,11 @@ namespace MVC.Controllers
                 foreach (var item in service.GetSpecialities())
                 {
                     list.Add(new SpecialityVM(item));
+                }
+                if (name != null)
+                {
+                    Object currentName = list.Where(x => x.Name == name);
+                    return View(currentName);
                 }
             }
             return View(list);
@@ -47,12 +52,7 @@ namespace MVC.Controllers
                             InspectorName = specialityVM.InspectorName,
                             Duration = specialityVM.Duration,
                             FacultyId = (int)specialityVM.FacultyId,
-                            //CurrentFaculty = new FacultyDTO
-                            //{
-                            //    Id = specialityVM.Id,
-                            //    //Name = specialityVM.Name
-                            //}
-
+                            
                         };
                         service.PostSpeciality(specialityDTO);
                         return RedirectToAction("Index");

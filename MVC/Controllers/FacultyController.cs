@@ -12,7 +12,7 @@ namespace MVC.Controllers
     public class FacultyController : Controller
     {
         // GET: Faculty
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
             List<FacultiesVM> facultyDTOs = new List<FacultiesVM>();
 
@@ -23,7 +23,12 @@ namespace MVC.Controllers
                     facultyDTOs.Add(new FacultiesVM(item));
                 }
             }
-                return View(facultyDTOs);
+            if (name != null)
+            {
+                Object currentName = facultyDTOs.Where(x => x.Name == name);
+                return View(currentName);
+            }
+            return View(facultyDTOs);
         }
 
         public ActionResult Create()

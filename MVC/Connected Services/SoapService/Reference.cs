@@ -9,525 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace MVC.SoapService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/Data.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MVC.SoapService.Speciality CurrentSpecialityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> DateOfBirthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EGNField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PhoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SpecialityIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MVC.SoapService.Speciality CurrentSpeciality {
-            get {
-                return this.CurrentSpecialityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CurrentSpecialityField, value) != true)) {
-                    this.CurrentSpecialityField = value;
-                    this.RaisePropertyChanged("CurrentSpeciality");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> DateOfBirth {
-            get {
-                return this.DateOfBirthField;
-            }
-            set {
-                if ((this.DateOfBirthField.Equals(value) != true)) {
-                    this.DateOfBirthField = value;
-                    this.RaisePropertyChanged("DateOfBirth");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int EGN {
-            get {
-                return this.EGNField;
-            }
-            set {
-                if ((this.EGNField.Equals(value) != true)) {
-                    this.EGNField = value;
-                    this.RaisePropertyChanged("EGN");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PhoneNumber {
-            get {
-                return this.PhoneNumberField;
-            }
-            set {
-                if ((this.PhoneNumberField.Equals(value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> SpecialityId {
-            get {
-                return this.SpecialityIdField;
-            }
-            set {
-                if ((this.SpecialityIdField.Equals(value) != true)) {
-                    this.SpecialityIdField = value;
-                    this.RaisePropertyChanged("SpecialityId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Speciality", Namespace="http://schemas.datacontract.org/2004/07/Data.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Speciality : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte CountSubjectField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte DurationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MVC.SoapService.Faculty FacultyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> FacultyIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InspectorNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MVC.SoapService.Student[] StudentsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte CountSubject {
-            get {
-                return this.CountSubjectField;
-            }
-            set {
-                if ((this.CountSubjectField.Equals(value) != true)) {
-                    this.CountSubjectField = value;
-                    this.RaisePropertyChanged("CountSubject");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte Duration {
-            get {
-                return this.DurationField;
-            }
-            set {
-                if ((this.DurationField.Equals(value) != true)) {
-                    this.DurationField = value;
-                    this.RaisePropertyChanged("Duration");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MVC.SoapService.Faculty Faculty {
-            get {
-                return this.FacultyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacultyField, value) != true)) {
-                    this.FacultyField = value;
-                    this.RaisePropertyChanged("Faculty");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> FacultyId {
-            get {
-                return this.FacultyIdField;
-            }
-            set {
-                if ((this.FacultyIdField.Equals(value) != true)) {
-                    this.FacultyIdField = value;
-                    this.RaisePropertyChanged("FacultyId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string InspectorName {
-            get {
-                return this.InspectorNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.InspectorNameField, value) != true)) {
-                    this.InspectorNameField = value;
-                    this.RaisePropertyChanged("InspectorName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MVC.SoapService.Student[] Students {
-            get {
-                return this.StudentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StudentsField, value) != true)) {
-                    this.StudentsField = value;
-                    this.RaisePropertyChanged("Students");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Faculty", Namespace="http://schemas.datacontract.org/2004/07/Data.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Faculty : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountEmployeesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeanField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double ProfitField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MVC.SoapService.Speciality[] SpecialtiesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountEmployees {
-            get {
-                return this.CountEmployeesField;
-            }
-            set {
-                if ((this.CountEmployeesField.Equals(value) != true)) {
-                    this.CountEmployeesField = value;
-                    this.RaisePropertyChanged("CountEmployees");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Dean {
-            get {
-                return this.DeanField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeanField, value) != true)) {
-                    this.DeanField = value;
-                    this.RaisePropertyChanged("Dean");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Profit {
-            get {
-                return this.ProfitField;
-            }
-            set {
-                if ((this.ProfitField.Equals(value) != true)) {
-                    this.ProfitField = value;
-                    this.RaisePropertyChanged("Profit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MVC.SoapService.Speciality[] Specialties {
-            get {
-                return this.SpecialtiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SpecialtiesField, value) != true)) {
-                    this.SpecialtiesField = value;
-                    this.RaisePropertyChanged("Specialties");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoapService.IService1")]
@@ -540,10 +22,10 @@ namespace MVC.SoapService {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        MVC.SoapService.CompositeType GetDataUsingDataContract(MVC.SoapService.CompositeType composite);
+        WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<MVC.SoapService.CompositeType> GetDataUsingDataContractAsync(MVC.SoapService.CompositeType composite);
+        System.Threading.Tasks.Task<WcfServiceLibrary1.CompositeType> GetDataUsingDataContractAsync(WcfServiceLibrary1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetStudents", ReplyAction="http://tempuri.org/IService1/GetStudentsResponse")]
         ApplicationService.DTO.StudentDTO[] GetStudents();
@@ -568,6 +50,12 @@ namespace MVC.SoapService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteStudent", ReplyAction="http://tempuri.org/IService1/DeleteStudentResponse")]
         System.Threading.Tasks.Task<string> DeleteStudentAsync(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditStudent", ReplyAction="http://tempuri.org/IService1/EditStudentResponse")]
+        string EditStudent(int id, ApplicationService.DTO.StudentDTO studentDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditStudent", ReplyAction="http://tempuri.org/IService1/EditStudentResponse")]
+        System.Threading.Tasks.Task<string> EditStudentAsync(int id, ApplicationService.DTO.StudentDTO studentDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFaculties", ReplyAction="http://tempuri.org/IService1/GetFacultiesResponse")]
         ApplicationService.DTO.FacultyDTO[] GetFaculties();
@@ -641,11 +129,11 @@ namespace MVC.SoapService {
             return base.Channel.GetDataAsync(value);
         }
         
-        public MVC.SoapService.CompositeType GetDataUsingDataContract(MVC.SoapService.CompositeType composite) {
+        public WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<MVC.SoapService.CompositeType> GetDataUsingDataContractAsync(MVC.SoapService.CompositeType composite) {
+        public System.Threading.Tasks.Task<WcfServiceLibrary1.CompositeType> GetDataUsingDataContractAsync(WcfServiceLibrary1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
@@ -679,6 +167,14 @@ namespace MVC.SoapService {
         
         public System.Threading.Tasks.Task<string> DeleteStudentAsync(int value) {
             return base.Channel.DeleteStudentAsync(value);
+        }
+        
+        public string EditStudent(int id, ApplicationService.DTO.StudentDTO studentDTO) {
+            return base.Channel.EditStudent(id, studentDTO);
+        }
+        
+        public System.Threading.Tasks.Task<string> EditStudentAsync(int id, ApplicationService.DTO.StudentDTO studentDTO) {
+            return base.Channel.EditStudentAsync(id, studentDTO);
         }
         
         public ApplicationService.DTO.FacultyDTO[] GetFaculties() {

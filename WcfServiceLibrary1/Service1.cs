@@ -32,7 +32,7 @@ namespace WcfServiceLibrary1
             }
             return composite;
         }
-
+        //------------------------------------------------ 
         public List<StudentDTO> GetStudents()
         {
             return studentService.GetAllStudent();
@@ -60,10 +60,16 @@ namespace WcfServiceLibrary1
                 return "Student is deleted.";
             }
         }
+        public StudentDTO GetStudentById(int id)
+        {
+            return studentService.GetById(id);
+        }
 
+
+        //------------------------------------------------ 
         public List<FacultyDTO> GetFaculties()
         {
-            return facultyService.GetAllFaculty(); 
+            return facultyService.GetAllFaculty();
         }
 
         public string PostFaculty(FacultyDTO facultyDTO)
@@ -119,9 +125,16 @@ namespace WcfServiceLibrary1
             }
         }
 
-        public StudentDTO GetStudentById(int id)
+        public string EditStudent(int id, StudentDTO studentDTO)
         {
-            return studentService.GetById(id);
+            if (studentService.Edit(id, studentDTO))
+            {
+                return "Student is edited.";
+            }
+            else
+            {
+                return "Student is not edited";
+            }
         }
     }
 }

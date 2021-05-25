@@ -17,6 +17,7 @@ namespace WcfServiceLibrary1
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
+        //------------------------------------------------ Operation related with students table
         // TODO: Add your service operations here
         [OperationContract]
         List<StudentDTO> GetStudents();
@@ -28,6 +29,9 @@ namespace WcfServiceLibrary1
         string PostStudent(StudentDTO studentDTO);
         [OperationContract]
         string DeleteStudent(int value);
+        [OperationContract]
+        string EditStudent(int id, StudentDTO studentDTO);
+        //------------------------------------------------ 
         [OperationContract]
         List<FacultyDTO> GetFaculties();
 

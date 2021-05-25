@@ -38,6 +38,7 @@ namespace ApplicationService.Implementation
         {
             Student item = ctx.Students.Find(id);
 
+            
             StudentDTO studentDTO = new StudentDTO
             {
                 Id = item.Id,
@@ -100,6 +101,28 @@ namespace ApplicationService.Implementation
                 return false;
             }
 
+        }
+        public bool Edit(int id,StudentDTO studentDTO)
+        {
+            try
+            {
+                StudentDTO studentToUpdate = GetById(id);
+
+                studentToUpdate.EGN = studentDTO.EGN;
+                studentToUpdate.FirstName = studentDTO.FirstName;
+                studentToUpdate.LastName = studentDTO.LastName;
+                studentToUpdate.PhoneNumber = studentDTO.PhoneNumber;
+                studentToUpdate.DateOfBirth = studentDTO.DateOfBirth;
+                studentToUpdate.SpecialityId = studentDTO.SpecialityId;
+     
+                ctx.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

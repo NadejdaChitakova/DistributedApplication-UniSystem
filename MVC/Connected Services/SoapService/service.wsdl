@@ -6,7 +6,6 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Data.Entities" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -44,6 +43,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_DeleteStudent_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditStudent" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditStudentResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFaculties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFaculties" />
@@ -105,6 +110,10 @@
     <wsdl:operation name="DeleteStudent">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteStudent" message="tns:IService1_DeleteStudent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteStudentResponse" message="tns:IService1_DeleteStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditStudent" message="tns:IService1_EditStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditStudentResponse" message="tns:IService1_EditStudent_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFaculties">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFaculties" message="tns:IService1_GetFaculties_InputMessage" />
@@ -180,6 +189,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteStudent">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditStudent">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditStudent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

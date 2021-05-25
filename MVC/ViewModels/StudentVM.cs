@@ -12,7 +12,7 @@ namespace MVC.ViewModels
     {
         public int Id { get; set; }
         [Required]
-        //[MaxLength(10, ErrorMessage = "The EGN is exactly 10 characters!"), MinLength(8)]
+        //[MaxLength(10, ErrorMessage = "The EGN is exactly 10 characters!"), MinLength(10)]
         public int EGN { get; set; }
 
         [Required]
@@ -26,7 +26,7 @@ namespace MVC.ViewModels
         [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
 
-        //[MaxLength(10, ErrorMessage = "The phone number is exactly 10 characters!"), MinLength(8)]
+       // [MaxLength(10, ErrorMessage = "The phone number is exactly 10 characters!"), MinLength(10)]
         public int PhoneNumber { get; set; }
 
         [Required]

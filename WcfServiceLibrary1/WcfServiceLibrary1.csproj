@@ -61,12 +61,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ApplicationService.DTO.FacultyDTO.datasource" />
+    <None Include="Properties\DataSources\ApplicationService.DTO.SpecialityDTO.datasource" />
+    <None Include="Properties\DataSources\ApplicationService.DTO.StudentDTO.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationService\ApplicationService.csproj">
       <Project>{563e46d1-0709-4ddd-b2f0-4df01053b698}</Project>
       <Name>ApplicationService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

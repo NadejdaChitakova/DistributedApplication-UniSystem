@@ -1,28 +1,37 @@
 ﻿using ApplicationService.DTO;
+using java.lang;
 using MVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Object = System.Object;
 
 namespace MVC.Controllers
 {
     public class StudentController : Controller
     {
         // GET: Student
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(string searchEGN)
         {
-            List<StudentVM> studentsVM = new List<StudentVM>();
+            List<StudentVM> studentVM = new List<StudentVM>();
             using (SoapService.Service1Client service = new SoapService.Service1Client()){
                 foreach (var item in service.GetStudents())
                 {
-                    studentsVM.Add(new StudentVM(item));
+                    studentVM.Add(new StudentVM(item));
                 }
             }
-            return View(studentsVM);
+
+            if (searchEGN != null)
+            {
+                int egn = Integer.parseInt(searchEGN);
+                Object currentEGN = studentVM.Where(x => x.EGN == egn);
+                return View(currentEGN);
+            }
+            return View(studentVM);
         }
-        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
@@ -37,7 +46,7 @@ namespace MVC.Controllers
             
                 if (ModelState.IsValid)
                 {
-                    using (SoapService.Service1Client client = new SoapService.Service1Client())
+                    using (SoapService.Service1Client service = new SoapService.Service1Client())
                     {
                         StudentDTO studentDTO = new StudentDTO
                         {
@@ -46,14 +55,10 @@ namespace MVC.Controllers
                             EGN = studentVM.EGN,
                             DateOfBirth = studentVM.DateOfBirth,
                             PhoneNumber = studentVM.PhoneNumber,
-                            SpecialityId = (int)studentVM.SpecialityId,
-                        //    CurrentSpeciality = new SpecialityDTO
-                        //    {
-                        //        Id = (int)studentVM.SpecialityId,
-                        //        Name = studentVM.specialityVM.Name
-                        //    }
+                            SpecialityId = (int)studentVM.SpecialityId
+                       
                         };
-                        client.PostStudent(studentDTO);
+                        service.PostStudent(studentDTO);
                         return RedirectToAction("Index");
                     }
                 }
@@ -63,9 +68,7 @@ namespace MVC.Controllers
             {
                 ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
                 return View();
-
-            }
-            
+            }   
         }
 
         public ActionResult Delete(int id)
@@ -77,5 +80,47 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+
+        public ActionResult Edit(int id)
+        {
+            StudentVM studentVM;
+            ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
+            using (SoapService.Service1Client service = new SoapService.Service1Client())
+            {
+                StudentDTO studentDTO = service.GetStudentById(id);
+                studentVM = new StudentVM
+                {
+                    EGN = studentDTO.EGN,
+                    FirstName = studentDTO.FirstName,
+                    LastName = studentDTO.LastName,
+                    DateOfBirth = studentDTO.DateOfBirth,
+                    PhoneNumber = studentDTO.PhoneNumber,
+                    SpecialityId = studentDTO.SpecialityId
+                };
+
+            }
+            return View(studentVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit()
+        {
+            if (ModelState.IsValid)
+            {
+                using (SoapService.Service1Client service = new SoapService.Service1Client())
+                {
+                    //StudentDTO studentDTO = new StudentDTO
+                    //{
+                      //  EGN = studentVM.EGN,
+                    //};
+                    //service.EditStudent(id,);
+                    
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
