@@ -46,6 +46,7 @@ namespace MVC.Controllers
                     {
                         SpecialityDTO specialityDTO = new SpecialityDTO
                         {
+                            // Id = specialityVM.Id,
                             Name = specialityVM.Name,
                             CountSubject = specialityVM.CountSubject,
                             Price = specialityVM.Price,
@@ -74,6 +75,72 @@ namespace MVC.Controllers
                 service.DeleteSpeciality(id);
             }
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            SpecialityVM specialityVM;
+            ViewBag.Faculties = Helper.LoadDataUnilities.LoadFaculties();
+            using (SoapService.Service1Client service = new SoapService.Service1Client())
+            {
+                SpecialityDTO specialityDTO = service.GetSpecialityById(id);
+                specialityVM = new SpecialityVM
+                {
+                    Name = specialityDTO.Name,
+                    CountSubject = specialityDTO.CountSubject,
+                    Duration = specialityDTO.Duration,
+                    Price = specialityDTO.Price,
+                    InspectorName = specialityDTO.InspectorName,
+                    FacultyId = specialityDTO.FacultyId,
+                };
+            }
+                return View(specialityVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(SpecialityVM specialityVM)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (SoapService.Service1Client service = new SoapService.Service1Client())
+                {
+                    SpecialityDTO specialityDTO = new SpecialityDTO
+                    {
+                        Id = specialityVM.Id,
+                        Name = specialityVM.Name,
+                        CountSubject = specialityVM.CountSubject,
+                        Duration = specialityVM.Duration,
+                        Price = specialityVM.Price,
+                        InspectorName = specialityVM.InspectorName,
+                        FacultyId = (int)specialityVM.FacultyId
+                    };
+                    service.EditSpeciality(specialityDTO);
+
+                }
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+
+            SpecialityVM specialityVM;
+            
+            using (SoapService.Service1Client service = new SoapService.Service1Client())
+            {
+                SpecialityDTO specialityDTO = service.GetSpecialityById(id);
+                specialityVM = new SpecialityVM
+                {
+                    Name = specialityDTO.Name,
+                    CountSubject = specialityDTO.CountSubject,
+                    Duration = specialityDTO.Duration,
+                    Price = specialityDTO.Price,
+                    InspectorName = specialityDTO.InspectorName,
+                    FacultyId = specialityDTO.FacultyId,
+                };
+            }
+            return View(specialityVM);
         }
     }
 }

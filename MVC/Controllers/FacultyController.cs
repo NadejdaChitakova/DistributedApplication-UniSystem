@@ -74,5 +74,65 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            FacultiesVM facultiesVM;
+
+            using (SoapService.Service1Client service = new Service1Client())
+            {
+                FacultyDTO facultyDTO = service.GetFacultyByID(id);
+                facultiesVM = new FacultiesVM
+                {
+                    Name = facultyDTO.Name,
+                    City = facultyDTO.City,
+                    CountEmployees = facultyDTO.CountEmployees,
+                    Dean = facultyDTO.Dean,
+                    Profit = facultyDTO.Profit,
+                };
+            }
+            return View(facultiesVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(FacultiesVM facultiesVM)
+        {
+                if (ModelState.IsValid)
+                {
+
+                    using (SoapService.Service1Client service = new SoapService.Service1Client())
+                    {
+                        FacultyDTO facultyDTO = new FacultyDTO
+                        {
+                            Id = facultiesVM.Id,
+                            City = facultiesVM.City,
+                            CountEmployees = facultiesVM.CountEmployees,
+                            Dean = facultiesVM.Dean,
+                            Profit = facultiesVM.Profit
+                        };
+                        service.EditFaculty(facultyDTO);
+
+                    }
+                }
+            return RedirectToAction("Index");
+        }
+        public ActionResult Details(int id)
+        {
+            FacultiesVM facultiesVM;
+
+            using (SoapService.Service1Client service = new Service1Client())
+            {
+                FacultyDTO facultyDTO = service.GetFacultyByID(id);
+                facultiesVM = new FacultiesVM
+                {
+                    Name = facultyDTO.Name,
+                    City = facultyDTO.City,
+                    CountEmployees = facultyDTO.CountEmployees,
+                    Dean = facultyDTO.Dean,
+                    Profit = facultyDTO.Profit,
+                };
+            }
+            return View(facultiesVM);
+        }
     }
 }

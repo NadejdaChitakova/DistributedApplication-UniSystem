@@ -37,7 +37,10 @@ namespace WcfServiceLibrary1
         {
             return studentService.GetAllStudent();
         }
-
+        public StudentDTO GetStudentById(int id)
+        {
+            return studentService.GetById(id);
+        }
         public string PostStudent(StudentDTO studentDTO)
         {
             if (!studentService.Save(studentDTO))
@@ -60,11 +63,18 @@ namespace WcfServiceLibrary1
                 return "Student is deleted.";
             }
         }
-        public StudentDTO GetStudentById(int id)
-        {
-            return studentService.GetById(id);
-        }
 
+        public string EditStudent(StudentDTO studentDTO)
+        {
+            if (studentService.Edit(studentDTO))
+            {
+                return "Student is edited.";
+            }
+            else
+            {
+                return "Student is not edited";
+            }
+        }
 
         //------------------------------------------------ 
         public List<FacultyDTO> GetFaculties()
@@ -95,12 +105,28 @@ namespace WcfServiceLibrary1
                 return "Faculty is deleted.";
             }
         }
+        public FacultyDTO GetFacultyByID(int id)
+        {
+            return facultyService.GetFacultyById(id);
+        }
 
+        public string EditFaculty(FacultyDTO facultyDTO)
+        {
+            if (facultyService.Edit(facultyDTO))
+            {
+                return "Faculty is edited";
+            }
+            else
+            {
+                return "Faculty is not edited.";
+            }
+        }
+        //------------------------------------------------ 
         public List<SpecialityDTO> GetSpecialities()
         {
             return specialityServicce.GetSpecialities();
         }
-
+        
         public string PostSpeciality(SpecialityDTO specialityDTO)
         {
             if (!specialityServicce.Save(specialityDTO))
@@ -125,16 +151,36 @@ namespace WcfServiceLibrary1
             }
         }
 
-        public string EditStudent(int id, StudentDTO studentDTO)
+        public SpecialityDTO GetSpecialityById(int id)
         {
-            if (studentService.Edit(id, studentDTO))
+            return specialityServicce.getById(id);
+        }
+
+        public string EditSpeciality(SpecialityDTO specialityDTO)
+        {
+            if (specialityServicce.Edit(specialityDTO))
             {
-                return "Student is edited.";
+                return "Speciality is edited.";
             }
             else
             {
-                return "Student is not edited";
+                return "Speciality is not edited.";
             }
+        }
+
+        public StudentDTO DetailsStudent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FacultyDTO DetailsFaculty(int id)
+        {
+            return facultyService.Details(id);
+        }
+
+        public SpecialityDTO DetailsSpeciality(int id)
+        {
+            return specialityServicce.Details(id);
         }
     }
 }

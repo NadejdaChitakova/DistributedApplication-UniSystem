@@ -52,10 +52,10 @@ namespace MVC.SoapService {
         System.Threading.Tasks.Task<string> DeleteStudentAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditStudent", ReplyAction="http://tempuri.org/IService1/EditStudentResponse")]
-        string EditStudent(int id, ApplicationService.DTO.StudentDTO studentDTO);
+        string EditStudent(ApplicationService.DTO.StudentDTO studentDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditStudent", ReplyAction="http://tempuri.org/IService1/EditStudentResponse")]
-        System.Threading.Tasks.Task<string> EditStudentAsync(int id, ApplicationService.DTO.StudentDTO studentDTO);
+        System.Threading.Tasks.Task<string> EditStudentAsync(ApplicationService.DTO.StudentDTO studentDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFaculties", ReplyAction="http://tempuri.org/IService1/GetFacultiesResponse")]
         ApplicationService.DTO.FacultyDTO[] GetFaculties();
@@ -75,11 +75,29 @@ namespace MVC.SoapService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteFaculty", ReplyAction="http://tempuri.org/IService1/DeleteFacultyResponse")]
         System.Threading.Tasks.Task<string> DeleteFacultyAsync(int value);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFacultyByID", ReplyAction="http://tempuri.org/IService1/GetFacultyByIDResponse")]
+        ApplicationService.DTO.FacultyDTO GetFacultyByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFacultyByID", ReplyAction="http://tempuri.org/IService1/GetFacultyByIDResponse")]
+        System.Threading.Tasks.Task<ApplicationService.DTO.FacultyDTO> GetFacultyByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditFaculty", ReplyAction="http://tempuri.org/IService1/EditFacultyResponse")]
+        string EditFaculty(ApplicationService.DTO.FacultyDTO facultyDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditFaculty", ReplyAction="http://tempuri.org/IService1/EditFacultyResponse")]
+        System.Threading.Tasks.Task<string> EditFacultyAsync(ApplicationService.DTO.FacultyDTO facultyDTO);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSpecialities", ReplyAction="http://tempuri.org/IService1/GetSpecialitiesResponse")]
         ApplicationService.DTO.SpecialityDTO[] GetSpecialities();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSpecialities", ReplyAction="http://tempuri.org/IService1/GetSpecialitiesResponse")]
         System.Threading.Tasks.Task<ApplicationService.DTO.SpecialityDTO[]> GetSpecialitiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSpecialityById", ReplyAction="http://tempuri.org/IService1/GetSpecialityByIdResponse")]
+        ApplicationService.DTO.SpecialityDTO GetSpecialityById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSpecialityById", ReplyAction="http://tempuri.org/IService1/GetSpecialityByIdResponse")]
+        System.Threading.Tasks.Task<ApplicationService.DTO.SpecialityDTO> GetSpecialityByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostSpeciality", ReplyAction="http://tempuri.org/IService1/PostSpecialityResponse")]
         string PostSpeciality(ApplicationService.DTO.SpecialityDTO specialityDTO);
@@ -92,6 +110,12 @@ namespace MVC.SoapService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSpeciality", ReplyAction="http://tempuri.org/IService1/DeleteSpecialityResponse")]
         System.Threading.Tasks.Task<string> DeleteSpecialityAsync(int value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditSpeciality", ReplyAction="http://tempuri.org/IService1/EditSpecialityResponse")]
+        string EditSpeciality(ApplicationService.DTO.SpecialityDTO specialityDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EditSpeciality", ReplyAction="http://tempuri.org/IService1/EditSpecialityResponse")]
+        System.Threading.Tasks.Task<string> EditSpecialityAsync(ApplicationService.DTO.SpecialityDTO specialityDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -169,12 +193,12 @@ namespace MVC.SoapService {
             return base.Channel.DeleteStudentAsync(value);
         }
         
-        public string EditStudent(int id, ApplicationService.DTO.StudentDTO studentDTO) {
-            return base.Channel.EditStudent(id, studentDTO);
+        public string EditStudent(ApplicationService.DTO.StudentDTO studentDTO) {
+            return base.Channel.EditStudent(studentDTO);
         }
         
-        public System.Threading.Tasks.Task<string> EditStudentAsync(int id, ApplicationService.DTO.StudentDTO studentDTO) {
-            return base.Channel.EditStudentAsync(id, studentDTO);
+        public System.Threading.Tasks.Task<string> EditStudentAsync(ApplicationService.DTO.StudentDTO studentDTO) {
+            return base.Channel.EditStudentAsync(studentDTO);
         }
         
         public ApplicationService.DTO.FacultyDTO[] GetFaculties() {
@@ -201,12 +225,36 @@ namespace MVC.SoapService {
             return base.Channel.DeleteFacultyAsync(value);
         }
         
+        public ApplicationService.DTO.FacultyDTO GetFacultyByID(int id) {
+            return base.Channel.GetFacultyByID(id);
+        }
+        
+        public System.Threading.Tasks.Task<ApplicationService.DTO.FacultyDTO> GetFacultyByIDAsync(int id) {
+            return base.Channel.GetFacultyByIDAsync(id);
+        }
+        
+        public string EditFaculty(ApplicationService.DTO.FacultyDTO facultyDTO) {
+            return base.Channel.EditFaculty(facultyDTO);
+        }
+        
+        public System.Threading.Tasks.Task<string> EditFacultyAsync(ApplicationService.DTO.FacultyDTO facultyDTO) {
+            return base.Channel.EditFacultyAsync(facultyDTO);
+        }
+        
         public ApplicationService.DTO.SpecialityDTO[] GetSpecialities() {
             return base.Channel.GetSpecialities();
         }
         
         public System.Threading.Tasks.Task<ApplicationService.DTO.SpecialityDTO[]> GetSpecialitiesAsync() {
             return base.Channel.GetSpecialitiesAsync();
+        }
+        
+        public ApplicationService.DTO.SpecialityDTO GetSpecialityById(int id) {
+            return base.Channel.GetSpecialityById(id);
+        }
+        
+        public System.Threading.Tasks.Task<ApplicationService.DTO.SpecialityDTO> GetSpecialityByIdAsync(int id) {
+            return base.Channel.GetSpecialityByIdAsync(id);
         }
         
         public string PostSpeciality(ApplicationService.DTO.SpecialityDTO specialityDTO) {
@@ -223,6 +271,14 @@ namespace MVC.SoapService {
         
         public System.Threading.Tasks.Task<string> DeleteSpecialityAsync(int value) {
             return base.Channel.DeleteSpecialityAsync(value);
+        }
+        
+        public string EditSpeciality(ApplicationService.DTO.SpecialityDTO specialityDTO) {
+            return base.Channel.EditSpeciality(specialityDTO);
+        }
+        
+        public System.Threading.Tasks.Task<string> EditSpecialityAsync(ApplicationService.DTO.SpecialityDTO specialityDTO) {
+            return base.Channel.EditSpecialityAsync(specialityDTO);
         }
     }
 }

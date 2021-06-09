@@ -55,9 +55,17 @@
     <Compile Include="Entities\Faculty.cs" />
     <Compile Include="Entities\Speciality.cs" />
     <Compile Include="Entities\Student.cs" />
-    <Compile Include="Migrations\202105211446420_addInitialMigration.cs" />
-    <Compile Include="Migrations\202105211446420_addInitialMigration.designer.cs">
-      <DependentUpon>202105211446420_addInitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202106081422499_InitialCreate.cs" />
+    <Compile Include="Migrations\202106081422499_InitialCreate.designer.cs">
+      <DependentUpon>202106081422499_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106091026448_changeDateTime.cs" />
+    <Compile Include="Migrations\202106091026448_changeDateTime.designer.cs">
+      <DependentUpon>202106091026448_changeDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106091155115_addAnotations.cs" />
+    <Compile Include="Migrations\202106091155115_addAnotations.designer.cs">
+      <DependentUpon>202106091155115_addAnotations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +76,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202105211446420_addInitialMigration.resx">
-      <DependentUpon>202105211446420_addInitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106081422499_InitialCreate.resx">
+      <DependentUpon>202106081422499_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106091026448_changeDateTime.resx">
+      <DependentUpon>202106091026448_changeDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106091155115_addAnotations.resx">
+      <DependentUpon>202106091155115_addAnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using ApplicationService.DTO;
 using Data.Context;
 using Data.Entities;
+using Reposiory.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,68 +18,77 @@ namespace ApplicationService.Implementation
         {
             List<StudentDTO> students = new List<StudentDTO>();
 
-            foreach (var item in ctx.Students.ToList())
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                students.Add(new StudentDTO{
-                    Id = item.Id,
-                    EGN = item.EGN,
-                    FirstName = item.FirstName,
-                    LastName = item.LastName,
-                    SpecialityId = (int)item.SpecialityId,
-                    CurrentSpeciality = new SpecialityDTO
+                foreach (var item in unitOfWork.StudentRepository.Get())
+                {
+                    students.Add(new StudentDTO
                     {
                         Id = item.Id,
-                        Name = item.CurrentSpeciality.Name
+                        EGN = item.EGN,
+                        FirstName = item.FirstName,
+                        LastName = item.LastName,
+                        PhoneNumber = item.PhoneNumber,
+                        SpecialityId = (int)item.SpecialityId,
+                        CurrentSpeciality = new SpecialityDTO
+                        {
+                            Id = item.Id,
+                            Name = item.CurrentSpeciality.Name
+                        }
+                    });
                     }
-                });
             }
-            return students;
+                return students;
         }
         public StudentDTO GetById(int id)
         {
-            Student item = ctx.Students.Find(id);
+            StudentDTO item = new StudentDTO();
 
-            
-            StudentDTO studentDTO = new StudentDTO
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                Id = item.Id,
-                EGN = item.EGN,
-                FirstName = item.FirstName,
-                LastName = item.LastName,
-                SpecialityId = (int)item.SpecialityId,
-                CurrentSpeciality = new SpecialityDTO
+               
+                Student student = unitOfWork.StudentRepository.GetByID(id);
+                if (student != null)
                 {
-                    Id = (int)item.SpecialityId,
-                    Name = item.CurrentSpeciality.Name
+                    item.Id = student.Id;
+                    item.EGN = student.EGN;
+                    item.FirstName = student.FirstName;
+                    item.DateOfBirth = student.DateOfBirth;
+                    item.LastName = student.LastName;
+                    item.PhoneNumber = student.PhoneNumber;
+                    item.SpecialityId = student.SpecialityId;
+                    //item.CurrentSpeciality = new SpecialityDTO
+                    //{
+                    //    Id = (int)student.SpecialityId,
+                    //    Name = item.CurrentSpeciality.Name
+                    //};
                 }
-            };
-            return studentDTO;
+                return item;
+            }
         }
         public bool Save(StudentDTO studentDTO)
         {
-            if ( studentDTO.SpecialityId == 0 )
-            {
-                return false;
-            }
+        //    if ( studentDTO.SpecialityId == 0 )
+        //    {
+        //        return false;
+        //    }
 
                 Student student = new Student {
                 EGN = studentDTO.EGN,
                 FirstName = studentDTO.FirstName,
                 LastName = studentDTO.LastName,
                 PhoneNumber = studentDTO.PhoneNumber,
-                DateOfBirth = studentDTO.DateOfBirth,
-                SpecialityId = studentDTO.SpecialityId,
-                //Speciality = new Speciality
-                //{
-                //    Id = studentDTO.Id,
-                //    Name = studentDTO.CurrentSpeciality.Name
-                //}
-                
+                DateOfBirth = (DateTime)studentDTO.DateOfBirth,
+                SpecialityId = studentDTO.SpecialityId,                
             };
             try
             {
-                ctx.Students.Add(student);
-                ctx.SaveChanges();
+                using (UnitOfWork unitOfWork = new UnitOfWork()) {
+
+                    unitOfWork.StudentRepository.Insert(student);
+                    unitOfWork.Save();
+                }
+
                 return true;
             }
             catch 
@@ -90,10 +100,13 @@ namespace ApplicationService.Implementation
         {
             try
             {
-                Student student = ctx.Students.Find(id);
-                ctx.Students.Remove(student);
-                ctx.SaveChanges();
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    Student student = unitOfWork.StudentRepository.GetByID(id);
+                    unitOfWork.StudentRepository.Delete(student);
+                    unitOfWork.Save();
 
+                }
                 return true;
             }
             catch 
@@ -102,26 +115,52 @@ namespace ApplicationService.Implementation
             }
 
         }
-        public bool Edit(int id,StudentDTO studentDTO)
+        public bool Edit(StudentDTO studentDTO)
         {
             try
             {
-                StudentDTO studentToUpdate = GetById(id);
+                Student student = new Student
+                {
+                    Id = studentDTO.Id,
+                    EGN = studentDTO.EGN,
+                    FirstName = studentDTO.FirstName,
+                    LastName = studentDTO.LastName,
+                    PhoneNumber = studentDTO.PhoneNumber,
+                    DateOfBirth = (DateTime)studentDTO.DateOfBirth,
+                    SpecialityId = studentDTO.SpecialityId,
 
-                studentToUpdate.EGN = studentDTO.EGN;
-                studentToUpdate.FirstName = studentDTO.FirstName;
-                studentToUpdate.LastName = studentDTO.LastName;
-                studentToUpdate.PhoneNumber = studentDTO.PhoneNumber;
-                studentToUpdate.DateOfBirth = studentDTO.DateOfBirth;
-                studentToUpdate.SpecialityId = studentDTO.SpecialityId;
-     
-                ctx.SaveChanges();
-
+                };
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    unitOfWork.StudentRepository.Update(student);
+                    unitOfWork.Save();
+                }
                 return true;
             }
             catch
             {
                 return false;
+            }
+        }
+        public StudentDTO Details(int id)
+        {
+            StudentDTO item = new StudentDTO();
+
+            using (UnitOfWork unitOfWork = new UnitOfWork())
+            {
+
+                Student student = unitOfWork.StudentRepository.GetByID(id);
+                if (student != null)
+                {
+                    item.Id = student.Id;
+                    item.EGN = student.EGN;
+                    item.FirstName = student.FirstName;
+                    item.LastName = student.LastName;
+                    item.PhoneNumber = student.PhoneNumber;
+                    item.SpecialityId = student.SpecialityId;
+                  
+                }
+                return item;
             }
         }
     }

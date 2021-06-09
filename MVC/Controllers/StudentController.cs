@@ -88,16 +88,19 @@ namespace MVC.Controllers
             ViewBag.Specialities = Helper.LoadDataUnilities.LoadSpecialities();
             using (SoapService.Service1Client service = new SoapService.Service1Client())
             {
+               
                 StudentDTO studentDTO = service.GetStudentById(id);
                 studentVM = new StudentVM
                 {
                     EGN = studentDTO.EGN,
                     FirstName = studentDTO.FirstName,
                     LastName = studentDTO.LastName,
-                    DateOfBirth = studentDTO.DateOfBirth,
+                    DateOfBirth = (DateTime)studentDTO.DateOfBirth,
                     PhoneNumber = studentDTO.PhoneNumber,
                     SpecialityId = studentDTO.SpecialityId
                 };
+
+                
 
             }
             return View(studentVM);
@@ -105,21 +108,51 @@ namespace MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit()
+        public ActionResult Edit(StudentVM studentVM)
         {
             if (ModelState.IsValid)
             {
                 using (SoapService.Service1Client service = new SoapService.Service1Client())
                 {
-                    //StudentDTO studentDTO = new StudentDTO
-                    //{
-                      //  EGN = studentVM.EGN,
-                    //};
-                    //service.EditStudent(id,);
-                    
+                    StudentDTO studentDTO = new StudentDTO
+                    {
+                        Id = studentVM.Id,
+                        FirstName = studentVM.FirstName,
+                        LastName = studentVM.LastName,
+                        PhoneNumber = studentVM.PhoneNumber,
+                        EGN = studentVM.EGN,
+                        DateOfBirth = studentVM.DateOfBirth,
+                        SpecialityId = studentVM.SpecialityId
+                    };
+                    service.EditStudent(studentDTO);
+
                 }
             }
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            StudentVM studentVM;
+            using (SoapService.Service1Client service = new SoapService.Service1Client())
+            {
+
+                StudentDTO studentDTO = service.GetStudentById(id);
+                studentVM = new StudentVM
+                {
+                    
+                    EGN = studentDTO.EGN,
+                    FirstName = studentDTO.FirstName,
+                    LastName = studentDTO.LastName,
+                    DateOfBirth = (DateTime)studentDTO.DateOfBirth,
+                    PhoneNumber = studentDTO.PhoneNumber,
+                    SpecialityId = studentDTO.SpecialityId
+                };
+
+
+
+            }
+            return View(studentVM);
         }
 
     }

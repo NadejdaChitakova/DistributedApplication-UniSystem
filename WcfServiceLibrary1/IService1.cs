@@ -17,7 +17,7 @@ namespace WcfServiceLibrary1
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
-        //------------------------------------------------ Operation related with students table
+        //------------------------------------------------ 
         // TODO: Add your service operations here
         [OperationContract]
         List<StudentDTO> GetStudents();
@@ -30,7 +30,9 @@ namespace WcfServiceLibrary1
         [OperationContract]
         string DeleteStudent(int value);
         [OperationContract]
-        string EditStudent(int id, StudentDTO studentDTO);
+        string EditStudent(StudentDTO studentDTO);
+        [OperationContract]
+        StudentDTO DetailsStudent(int id);
         //------------------------------------------------ 
         [OperationContract]
         List<FacultyDTO> GetFaculties();
@@ -39,14 +41,28 @@ namespace WcfServiceLibrary1
         string PostFaculty(FacultyDTO facultyDTO);
         [OperationContract]
         string DeleteFaculty(int value);
+        [OperationContract]
+        FacultyDTO GetFacultyByID(int id);
+        [OperationContract]
+        string EditFaculty(FacultyDTO facultyDTO);
+        [OperationContract]
+        FacultyDTO DetailsFaculty(int id);
+        //------------------------------------------------
 
         [OperationContract]
         List<SpecialityDTO> GetSpecialities();
 
         [OperationContract]
+        SpecialityDTO GetSpecialityById(int id);
+
+        [OperationContract]
         string PostSpeciality(SpecialityDTO specialityDTO);
         [OperationContract]
         string DeleteSpeciality(int value);
+        [OperationContract]
+        string EditSpeciality(SpecialityDTO specialityDTO );
+        [OperationContract]
+        SpecialityDTO DetailsSpeciality(int id);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

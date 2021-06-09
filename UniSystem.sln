@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary1", "WcfServiceLibrary1\WcfServiceLibrary1.csproj", "{CC5B0540-F588-498C-84AA-34ED0604A9B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reposiory", "Reposiory\Reposiory.csproj", "{1CF1F3F7-78A7-4979-A814-68B8166ECFA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{CC5B0540-F588-498C-84AA-34ED0604A9B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC5B0540-F588-498C-84AA-34ED0604A9B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC5B0540-F588-498C-84AA-34ED0604A9B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF1F3F7-78A7-4979-A814-68B8166ECFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF1F3F7-78A7-4979-A814-68B8166ECFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF1F3F7-78A7-4979-A814-68B8166ECFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF1F3F7-78A7-4979-A814-68B8166ECFA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{E06B1E0B-54F9-46CA-9A9D-3F45E427D3BF} = {BD0CDEC5-3833-4472-972D-8425A59440B3}
 		{E2483BED-A434-47B5-988F-36DA33652F39} = {FAD0C63F-20B6-4299-B576-CEC5003A57DC}
 		{CC5B0540-F588-498C-84AA-34ED0604A9B1} = {FAD0C63F-20B6-4299-B576-CEC5003A57DC}
+		{1CF1F3F7-78A7-4979-A814-68B8166ECFA5} = {BD0CDEC5-3833-4472-972D-8425A59440B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79E8F502-76FE-4BD6-80BC-143E3C6BB945}

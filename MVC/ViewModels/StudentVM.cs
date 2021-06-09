@@ -11,8 +11,7 @@ namespace MVC.ViewModels
     public class StudentVM
     {
         public int Id { get; set; }
-        [Required]
-        //[MaxLength(10, ErrorMessage = "The EGN is exactly 10 characters!"), MinLength(10)]
+        [Required(ErrorMessage = "You must provide a phone number")]
         public int EGN { get; set; }
 
         [Required]
@@ -26,7 +25,7 @@ namespace MVC.ViewModels
         [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
 
-       // [MaxLength(10, ErrorMessage = "The phone number is exactly 10 characters!"), MinLength(10)]
+        [DataType(DataType.PhoneNumber)]
         public int PhoneNumber { get; set; }
 
         [Required]

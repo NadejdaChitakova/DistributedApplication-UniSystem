@@ -17,16 +17,14 @@ namespace Data.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Faculty>()
-            //    .HasMany<Specialty>(g => g.Specialties)
-            //    .WithRequired(s => s.Faculty)
-            //    .HasForeignKey(s => s.FacultyId)
-            //    .WillCascadeOnDelete();
-            //modelBuilder.Entity<Specialty>()
-            //    .HasMany<Student>(g => g.Students)
-            //    .WithRequired(s => s.CurrentSpeciality)
-            //    .HasForeignKey(s => s.SpecialityId)
-            //    .WillCascadeOnDelete();
+            modelBuilder.Entity<Faculty>()
+                        .HasMany<Speciality>(f => f.Specialities)
+                        .WithRequired(s => s.Faculty)
+                        .WillCascadeOnDelete();
+            modelBuilder.Entity<Speciality>()
+                        .HasMany<Student>(s => s.Students)
+                        .WithRequired(st => st.CurrentSpeciality)
+                        .WillCascadeOnDelete();
 
         }
 

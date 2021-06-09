@@ -13,10 +13,17 @@ namespace Data.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(70)]
         public string Dean { get; set; }
+        [Required]
+        [MaxLength(25)]
         public string City { get; set; }
         public double Profit { get; set; }
         public int CountEmployees { get; set; }
+        public virtual ICollection<Speciality> Specialities { get; set; }
     }
 }

@@ -87,7 +87,6 @@
   <xs:element name="EditStudent">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="studentDTO" nillable="true" type="q6:StudentDTO" />
       </xs:sequence>
     </xs:complexType>
@@ -139,6 +138,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetFacultyByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFacultyByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="GetFacultyByIDResult" nillable="true" type="q9:FacultyDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditFaculty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="facultyDTO" nillable="true" type="q10:FacultyDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditFacultyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EditFacultyResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetSpecialities">
     <xs:complexType>
       <xs:sequence />
@@ -147,14 +174,28 @@
   <xs:element name="GetSpecialitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="GetSpecialitiesResult" nillable="true" type="q9:ArrayOfSpecialityDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="GetSpecialitiesResult" nillable="true" type="q11:ArrayOfSpecialityDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSpecialityById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSpecialityByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="GetSpecialityByIdResult" nillable="true" type="q12:SpecialityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PostSpeciality">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="specialityDTO" nillable="true" type="q10:SpecialityDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="specialityDTO" nillable="true" type="q13:SpecialityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,6 +217,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteSpecialityResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditSpeciality">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ApplicationService.DTO" minOccurs="0" name="specialityDTO" nillable="true" type="q14:SpecialityDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditSpecialityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EditSpecialityResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
